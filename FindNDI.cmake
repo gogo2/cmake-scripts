@@ -3,36 +3,72 @@
 #  NDI_LIBRARIES - link these to use NDI
 
 include(ext/LibFindMacros)
+<<<<<<< HEAD
+
+if ("${CMAKE_SIZEOF_VOID_P}" EQUAL "8")
+    message(STATUS "Looking for 64bit NDI")
+    if (WIN32 OR APPLE)
+        set(NDI_ARCH x64)
+    elseif (UNIX)
+        set(NDI_ARCH x86_64-linux-gnu)
+    endif ()
+else ()
+    message(STATUS "Looking for 32bit NDI")
+    if (WIN32)
+        set(NDI_ARCH x86)
+    elseif (UNIX AND NOT APPLE)
+        set(NDI_ARCH i686-linux-gnu)
+    endif ()
+=======
 if ("${CMAKE_SIZEOF_VOID_P}" EQUAL "8")
     message(STATUS "Looking for 64bit NDI")
     set(NDI_ARCH x64)
 else ()
     message(STATUS "Looking for 32bit NDI")
     set(NDI_ARCH x86)
+>>>>>>> a402884baa83836012316520dfde9cf2de126564
 endif ()
 
 if (WIN32)
     set(NDI_LIB_NAME Processing.NDI.Lib.${NDI_ARCH})
     set(NDI_BASE_DIR $ENV{NDI_SDK_DIR})
 elseif (APPLE)
+<<<<<<< HEAD
+    set(NDI_LIB_NAME ndi.4)
+    set(NDI_BASE_DIR ${NDI_INSTALL_DIR})
+elseif (UNIX)
+    set(NDI_LIB_NAME ndi)
+    set(NDI_BASE_DIR ${NDI_INSTALL_DIR})
+endif ()
+message(STATUS  ${NDI_BASE_DIR}/lib/${NDI_ARCH})
+=======
     set(NDI_LIB_NAME ndi.3)
     set(NDI_BASE_DIR "/NewTek NDI SDK")
 else ()
     set(NDI_LIB_NAME ndi)
 endif ()
 
+>>>>>>> a402884baa83836012316520dfde9cf2de126564
 find_path(NDI_INCLUDE_DIR
         NAMES
         Processing.NDI.Lib.h
         PATHS
+<<<<<<< HEAD
+        ${NDI_BASE_DIR}/include
+=======
         ${NDI_BASE_DIR}/Include
+>>>>>>> a402884baa83836012316520dfde9cf2de126564
         )
 
 find_library(NDI_LIBRARY
         NAMES
         ${NDI_LIB_NAME}
         PATHS
+<<<<<<< HEAD
+        ${NDI_BASE_DIR}/lib/${NDI_ARCH}
+=======
         ${NDI_BASE_DIR}/Lib/${NDI_ARCH}
+>>>>>>> a402884baa83836012316520dfde9cf2de126564
         )
 
 set(NDI_PROCESS_INCLUDES NDI_INCLUDE_DIR)

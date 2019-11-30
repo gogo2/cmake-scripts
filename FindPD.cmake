@@ -4,11 +4,23 @@
 
 include(ext/LibFindMacros)
 
+<<<<<<< HEAD
+if (NOT PD_INSTALL_DIR)
+    message(FATAL_ERROR "Please set PD_INSTALL_DIR variable (installation directory of Pure Data)")
+endif ()
+
+=======
+>>>>>>> a402884baa83836012316520dfde9cf2de126564
 if (WIN32)
     set(PD_BASE_DIR ${PD_INSTALL_DIR})
 elseif (APPLE)
     set(PD_BASE_DIR ${PD_INSTALL_DIR}/Contents/Resources)
+<<<<<<< HEAD
+elseif (UNIX)
+    set(PD_BASE_DIR ${PD_INSTALL_DIR})
+=======
 else ()
+>>>>>>> a402884baa83836012316520dfde9cf2de126564
 endif ()
 
 find_path(PD_INCLUDE_DIR
@@ -18,7 +30,11 @@ find_path(PD_INCLUDE_DIR
         ${PD_BASE_DIR}/src
         )
 
+<<<<<<< HEAD
+if (WIN32)
+=======
 if (NOT APPLE)
+>>>>>>> a402884baa83836012316520dfde9cf2de126564
     find_library(PD_LIBRARY
             NAMES
             pd
