@@ -6,7 +6,6 @@ include(ext/LibFindMacros)
 
 find_package(PD)
 
-<<<<<<< HEAD
 if (NOT GEM_EXTERN_DIR)
     if (WIN32)
         set(GEM_EXTERN_DIR "$ENV{USERPROFILE}/Documents/Pd/externals/Gem")
@@ -24,18 +23,12 @@ if (WIN32 OR APPLE)
     set(GEM_INCLUDE_BASE_DIR "${GEM_BASE_DIR}/include/Gem")
 elseif (UNIX)
     set(GEM_INCLUDE_BASE_DIR ${GEM_EXTERN_DIR})
-=======
-if (WIN32 OR APPLE)
-    set(GEM_BASE_DIR ${GEM_EXTERN_DIR})
-else()
->>>>>>> a402884baa83836012316520dfde9cf2de126564
 endif ()
 
 find_path(GEM_INCLUDE_DIR
         NAMES
         GemBase.h
         PATHS
-<<<<<<< HEAD
         "${GEM_INCLUDE_BASE_DIR}/Base"
         )
 
@@ -47,19 +40,6 @@ if (WIN32)
             ${GEM_BASE_DIR}
             )
 endif ()
-=======
-        ${GEM_BASE_DIR}/include/Gem/Base
-        )
-
-if(NOT APPLE)
-find_library(GEM_LIBRARY
-        NAMES
-        Gem
-        PATHS
-        ${GEM_BASE_DIR}
-        )
-endif()
->>>>>>> a402884baa83836012316520dfde9cf2de126564
 
 get_filename_component(GEM_INCLUDE_DIR ${GEM_INCLUDE_DIR} DIRECTORY)
 
@@ -68,8 +48,4 @@ set(GEM_PROCESS_LIBS GEM_LIBRARY)
 libfind_process(GEM)
 
 message(STATUS "GEM_LIBRARIES: ${GEM_LIBRARIES}")
-<<<<<<< HEAD
 message(STATUS "GEM_INCLUDE_DIRS: ${GEM_INCLUDE_DIRS}")
-=======
-message(STATUS "GEM_INCLUDE_DIRS: ${GEM_INCLUDE_DIRS}")
->>>>>>> a402884baa83836012316520dfde9cf2de126564
